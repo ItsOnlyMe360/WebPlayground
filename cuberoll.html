@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Randomly Moving 3D Cube</title>
+	<style>
+		#cube-container {
+			position: relative;
+			margin: 100px auto;
+			width: 200px;
+			height: 200px;
+			perspective: 800px;
+		}
+
+		#cube {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			transform-style: preserve-3d;
+			transform-origin: center;
+			animation: spin 10s linear infinite;
+		}
+
+		.face {
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			opacity: 0.8;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			font-size: 80px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 200px;
+			user-select: none;
+		}
+
+		.front {
+			transform: translateZ(100px);
+			background: linear-gradient(0deg, rgba(22,179,44,1) 0%, rgba(0,165,198,1) 100%);
+		}
+
+		.back {
+			transform: translateZ(-100px) rotateY(180deg);
+			background: linear-gradient(0deg, rgba(22,179,44,1) 0%, rgba(0,165,198,1) 100%);
+		}
+
+		.top {
+			transform: rotateX(90deg) translateZ(100px);
+			background: rgba(0,165,198,1);
+		}
+
+		.bottom {
+			transform: rotateX(-90deg) translateZ(100px);
+			background: rgba(0,167,14,1);
+		}
+
+		.left {
+			transform: rotateY(-90deg) translateZ(100px);
+			background: linear-gradient(0deg, rgba(22,179,44,1) 0%, rgba(0,165,198,1) 100%);
+		}
+
+		.right {
+			transform: rotateY(90deg) translateZ(100px);
+			background: linear-gradient(0deg, rgba(22,179,44,1) 0%, rgba(0,165,198,1) 100%);
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			}
+
+			100% {
+				transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="cube-container">
+		<div id="cube">
+			<div class="face front"></div>
+			<div class="face back"></div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+			<div class="face left"></div>
+			<div class="face right"></div>
+		</div>
+	</div>
+<script>
+    const cube = document.getElementById('cube');
+		let isDragging = false;
+		let lastX, lastY;
+
+		// Add mouse event listeners to the cube container
+		document.getElementById('cube-container').addEventListener('mousedown', e => {
+			isDragging = true;
+			lastX = e.clientX;
+			lastY = e.clientY;
+		});
+
+		document.getElementById('cube-container').addEventListener('mousemove', e => {
+			if (isDragging) {
+				let deltaX = e.clientX - lastX;
+				let deltaY = e.clientY - lastY;
+
+				// Rotate the cube based on the mouse movement
+				cube.style.transform += `rotateX(${deltaY * 0.5}deg) rotateY(${deltaX * 0.5}deg)`;
+
+				lastX = e.clientX;
+				lastY = e.clientY;
+			}
+		});
+
+		document.addEventListener('mouseup', e => {
+			isDragging = false;
+		});
+		
+		 window.onload = function() {
+                var labels = document.getElementsByTagName('label');
+                for (var i = 0; i < labels.length; i++) {
+                    disableSelection(labels[i]);
+                }
+            };
+            function disableSelection(element) {
+                if (typeof element.onselectstart != 'undefined') {
+                    element.onselectstart = function() { return false; };
+                } else if (typeof element.style.MozUserSelect != 'undefined') {
+                    element.style.MozUserSelect = 'none';
+                } else {
+                    element.onmousedown = function() { return false; };
+                }
+            }
+</script>
+</body>
+</html>
