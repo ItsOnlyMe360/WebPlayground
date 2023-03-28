@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Círculo Colorido que Segue o Mouse</title>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      #circle {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: red;
+        transition: all 0.3s ease-out;
+        z-index: 9999;
+        cursor: pointer;
+        box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="circle"></div>
+    <script>
+      var circle = document.getElementById("circle");
+
+      window.addEventListener("mousemove", function(event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        var newX = x - circle.offsetWidth/2;
+        var newY = y - circle.offsetHeight/2;
+
+        circle.style.transform = "translate3d(" + newX + "px, " + newY + "px, 0)";
+      });
+
+      circle.addEventListener("click", function() {
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+        circle.style.backgroundColor = "#" + randomColor;
+        circle.style.boxShadow = "0px 0px 10px 5px #" + randomColor;
+      });
+    </script>
+  </body>
+</html>
