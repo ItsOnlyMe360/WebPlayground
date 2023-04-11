@@ -3,54 +3,138 @@
 <head>
 	<title>Web Playground</title>
 	<style>
+		@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
 		body {
 			margin: 0;
 			padding: 0;
-			background-color: #f7f7f7;
+			background-color: #000000;
 			font-family: 'Open Sans', sans-serif;
 		}
 
 		header {
-			text-align: center;
-			background-color: #333;
-			color: #fff;
-			padding: 20px;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		}
+		text-align: center;
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
 
-		h1 {
-			margin: 0;
-			font-size: 36px;
-			font-weight: 600;
-			letter-spacing: 2px;
-		}
+	h1 {
+		margin: 0;
+		font-size: 36px;
+		font-weight: 600;
+		letter-spacing: 2px;
+	}
 
-		a {
-			color: #333;
-			text-decoration: none;
-			display: inline-block;
-			padding: 10px 20px;
-			background-color: #fff;
-			border-radius: 30px;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			transition: background-color 0.3s ease;
-			font-size: 30px;
-			font-weight: 600;
-			margin-top: 40px;
-		}
+	a {
+		color: #333;
+		text-decoration: none;
+		display: inline-block;
+		padding: 10px 20px;
+		background-color: #fff;
+		border-radius: 30px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		transition: background-color 0.3s ease;
+		font-size: 15px;
+		font-weight: 600;
+		margin-right: 10px;
+	}
 
-		a:hover {
-			background-color: #333;
-			color: #fff;
-		}
-	</style>
+	a:hover {
+		background-color: #333;
+		color: #fff;
+	}
+
+	.card-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		margin-top: 40px;
+	}
+
+	.card {
+		margin: 20px;
+		flex-basis: 45%;
+		max-width: 500px;
+		background-color: #262626;
+		border-radius: 30px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		color: #fff;
+		transition: transform 0.3s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-5px);
+	}
+
+	.card-image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 200px;
+		background-color: #F2F2F2;
+		border-top-left-radius: 30px;
+		border-top-right-radius: 30px;
+	}
+
+	.card-image i {
+		color: #262626;
+		font-size: 5em;
+	}
+
+	.card-content {
+		padding: 20px;
+	}
+
+	.card-content h2 {
+		font-size: 28px;
+		font-weight: 600;
+		letter-spacing: 1px;
+		margin-bottom: 10px;
+	}
+
+	.card-content p {
+		font-size: 16px;
+		line-height: 1.5;
+		margin-bottom: 20px;
+	}
+
+	.card-content a {
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
+</style>
 </head>
 <body>
 	<header>
 		<h1>Web Playground</h1>
 	</header>
-	<div style="text-align: center;">
-		<a href="https://itsonlyme360.github.io/WebPlayground/circlecolor.html" target="_blank">Circle Color</a>
-	</div>
+	<main>
+		<div class="card-container">
+			<div class="card">
+				<div class="card-image" style="background-color: #797979;">
+					<i class="fas fa-cube fa-5x"></i>
+				</div>
+				<div class="card-content">
+					<h2>Cube Roll</h2>
+					<p>Um cubo que fica girando aleatoriamente.</p>
+					<a href="https://itsonlyme360.github.io/WebPlayground/cuberoll.html" target="_blank">Abrir</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-image" style="background-color: #797979;">
+					<i class="fas fa-circle fa-5x"></i>
+				</div>
+				<div class="card-content">
+					<h2>Circle Color</h2>
+					<p>Um círculo que muda de cor quando clicado.</p>
+					<a href="https://itsonlyme360.github.io/WebPlayground/circlecolor.html" target="_blank">Abrir</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
-</html>
+</html>	
